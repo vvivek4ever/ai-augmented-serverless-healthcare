@@ -40,6 +40,7 @@ This repo provides:
 
 ## 🚀 Quick Start
 
+### Run Locally (No Docker)
 ```bash
 # Clone the repo
 git clone https://github.com/vvivek4ever/ai-augmented-serverless-healthcare.git
@@ -49,8 +50,9 @@ cd ai-augmented-serverless-healthcare
 python synthetic-data/generate_synthetic.py
 
 # Run the minimal inference API
-cd src
+cd src/inference_stub
 python app.py
+
 
 The server will start locally on port 8080.
 
@@ -59,5 +61,30 @@ Test API endpoints:
 curl http://localhost:8080/           # Sample risk score
 curl http://localhost:8080/health     # Health check
 
-
 Press Ctrl + C to stop the server.
+
+Run with Docker
+
+# Build the Docker image
+docker build -t inference-api src/inference_stub/
+
+# Run the container
+docker run -p 8080:8080 inference-api
+
+
+The container will serve the API on http://localhost:8080.
+
+Test API endpoints:
+
+curl http://localhost:8080/           # Sample risk score
+curl http://localhost:8080/health     # Health check
+
+
+To stop the container:
+
+docker ps                             # Find your container ID
+docker stop <container_id>
+
+
+
+

@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: inference-api
+  namespace: default
+  annotations:
+    autoscaling.knative.dev/minScale: "1"
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/containerConcurrency: "1"
+    spec:
+      containers:
+        - image: ghcr.io/YOUR_GH_USERNAME/inference-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MODEL_NAME
+              value: risk_scorer_stub
+          readinessProbe:
+            httpGet: { path: /health, port: 8080 }
+          livenessProbe:
+            httpGet: { path: /health, port: 8080 }
