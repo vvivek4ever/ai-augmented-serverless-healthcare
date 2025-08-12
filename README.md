@@ -87,6 +87,10 @@ Test API endpoints:
 curl http://localhost:8080/           # Sample risk score
 curl http://localhost:8080/health     # Health check
 
+### Download prebuilt synthetic CSVs (no local Python needed)
+GitHub Actions generates and uploads the CSVs on each push.  
+Go to **Actions → Generate Synthetic Data → latest run → Artifacts → `synthetic-csvs`** to download `health_events.csv` and `contact_edges.csv`.
+
 To Stop the Container
 
 docker ps            # Find your container ID
