@@ -91,6 +91,10 @@ curl http://localhost:8080/health     # Health check
 GitHub Actions generates and uploads the CSVs on each push.  
 Go to **Actions → Generate Synthetic Data → latest run → Artifacts → `synthetic-csvs`** to download `health_events.csv` and `contact_edges.csv`.
 
+### Quick metrics
+```bash
+python notebooks/quick_metrics.py
+
 To Stop the Container
 
 docker ps            # Find your container ID
