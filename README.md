@@ -63,7 +63,7 @@ curl http://localhost:8080/health     # Health check
 
 Press Ctrl + C to stop the server.
 
-Run with Docker
+Run with Docker (Build Locally)
 
 # Build the Docker image
 docker build -t inference-api src/inference_stub/
@@ -71,20 +71,23 @@ docker build -t inference-api src/inference_stub/
 # Run the container
 docker run -p 8080:8080 inference-api
 
+Test API endpoints:
 
-The container will serve the API on http://localhost:8080.
+curl http://localhost:8080/           # Sample risk score
+curl http://localhost:8080/health     # Health check
+
+Run with Prebuilt GHCR Image (Recommended)
+You can skip the build step and pull the latest prebuilt image:
+
+docker pull ghcr.io/vvivek4ever/inference-api:latest
+docker run -p 8080:8080 ghcr.io/vvivek4ever/inference-api:latest
 
 Test API endpoints:
 
 curl http://localhost:8080/           # Sample risk score
 curl http://localhost:8080/health     # Health check
 
+To Stop the Container
 
-To stop the container:
-
-docker ps                             # Find your container ID
-docker stop <container_id>
-
-
-
-
+docker ps            # Find your container ID
+docker stop <id>
