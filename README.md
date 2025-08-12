@@ -47,3 +47,17 @@ cd ai-augmented-serverless-healthcare
 
 # Generate synthetic data
 python synthetic-data/generate_synthetic.py
+
+# Run the minimal inference API
+cd src
+python app.py
+
+The server will start locally on port 8080.
+
+Test API endpoints:
+
+curl http://localhost:8080/           # Sample risk score
+curl http://localhost:8080/health     # Health check
+
+
+Press Ctrl + C to stop the server.
